@@ -15,7 +15,36 @@ import UIKit
  - hint. 클래스의 책임(단일책임원칙)
  */
 
-// MARK: - class
+class AddOperation {
+    func operate(_ firstNumber: Int,_ secondNumber: Int) -> Double {
+        Double(firstNumber + secondNumber)
+    }
+}
+
+class SubstractOperation {
+    /**
+      - parameters:
+      - firstNumber: 빼기 연산자의 왼쪽에 오는 수
+      - secondNumber: 빼기 연산자의 오른쪽에 오는 수
+     */
+    func operate(_ firstNumber: Int,_ secondNumber: Int) -> Double {
+        Double(firstNumber - secondNumber)
+    }
+}
+
+class MultiplyOperation {
+    func operate(_ firstNumber: Int,_ secondNumber: Int) -> Double {
+        Double(firstNumber * secondNumber)
+    }
+}
+
+class DivideOperation {
+    func operate(_ firstNumber: Int,_ secondNumber: Int) -> Double {
+        // 분모나 분자가 0이 올 때 예외처리
+        guard secondNumber != 0 else { return 0 }
+        return Double(firstNumber) / Double(secondNumber)
+    }
+}
 
 class Calculator {
     // 프로퍼티 초기화
@@ -23,17 +52,9 @@ class Calculator {
     let subtractOperation = SubstractOperation()
     let multiplyOperation = MultiplyOperation()
     let divideOperation = DivideOperation()
-    
-    enum Operation {
-        case addition
-        case subtraction
-        case multiplication
-        case division
-    }
-    // -> 배열로 묶을지, enum으로 관리할지 고민!
-    
-    func calculate(_ operateCode: Operation, _ firstNumber: Double, _ secondNumber: Double) -> Double {
-        // opertatorCode에 따라 프로퍼티의 함수를 실행
+
+    func calculate(_ operateCode: OperationType, _ firstNumber: Int, _ secondNumber: Int) -> Double {
+        // OperationType에 따라 프로퍼티의 함수를 실행
         switch operateCode {
         case .addition:
             return addOperation.operate(firstNumber, secondNumber)
@@ -47,35 +68,21 @@ class Calculator {
     }
 }
 
-class AddOperation {
-    func operate(_ firstNumber: Double,_ secondNumber: Double) -> Double {
-        return firstNumber + secondNumber
-    }
+enum OperationType {
+    case addition
+    case subtraction
+    case multiplication
+    case division
 }
 
-class SubstractOperation {
-    func operate(_ firstNumber: Double,_ secondNumber: Double) -> Double {
-        return firstNumber - secondNumber
-    }
-}
-class MultiplyOperation {
-    func operate(_ firstNumber: Double,_ secondNumber: Double) -> Double {
-        return firstNumber * secondNumber
-    }
-}
-class DivideOperation {
-    func operate(_ firstNumber: Double,_ secondNumber: Double) -> Double {
-        return firstNumber / secondNumber
-    }
-}
 
 // MARK: - Main
 func testLv3() {
     let calculator = Calculator()
-    let addResult = calculator.calculate(.addition, 3, 5)
-    let subtractResult = calculator.calculate(.subtraction, 3, 5)
-    let multiplyResult = calculator.calculate(.multiplication, 3, 5)
-    let divideResult = calculator.calculate(.division, 3, 5)
+    let addResult = calculator.calculate(.addition, 1, 2)               //3
+    let subtractResult = calculator.calculate(.subtraction, 1, 2)       // -1
+    let multiplyResult = calculator.calculate(.multiplication, 3, 5)    // 15
+    let divideResult = calculator.calculate(.division, 1, 3)            // 0.333333
     
     print("addResult : \(addResult)")
     print("subtractResult : \(subtractResult)")
