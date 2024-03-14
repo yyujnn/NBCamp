@@ -7,7 +7,6 @@
 
 import Foundation
 
-// BaseballGame 인스턴스를 만들고 start 함수를 구현하기!
-
+// BaseballGame 인스턴스를 만들고 start 함수를 구현하기
 let game = BaseballGame()
 game.start()
