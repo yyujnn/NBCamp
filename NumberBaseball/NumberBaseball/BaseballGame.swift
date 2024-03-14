@@ -3,10 +3,11 @@
 //  NumberBaseball
 //
 /*
- Lv2
+ Lv3
  - 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받습니다.
  - 같은 자리에 같은 숫자가 있는 경우 스트라이크, 다른 자리에 숫자가 있는 경우 볼입니다.
  - 만약 올바르지 않은 입력값에 대해서는 오류 문구를 보여주세요.
+ - 정답이 되는 숫자를 0에서 9까지의 서로 다른 3자리의 숫자로 바꿔주세요. (맨 앞자리 0은 불가능)
  */
 import Foundation
 
@@ -29,20 +30,26 @@ class BaseballGame {
             print("\n숫자를 입력하세요.")
             guard let userInput = readLine() else { continue }
             
-            // 2. 정수로 변환되지 않는 경우 반복문 처음으로 돌아가기
+            // 2. 문자열 길이 3자리 확인 -> ex) 0456 정수 변환 시 3자리 숫자로 변경
+            if userInput.count != numberCount {
+                print("⚠️ 올바르지 않은 입력값입니다.")
+                continue
+            }
+            
+            // 3. 정수로 변환되지 않는 경우 반복문 처음으로 돌아가기
             guard let userInput = Int(userInput) else {
                 print("⚠️ 올바르지 않은 입력값입니다.")
                 continue
             }
             
-            // 3. 세자리가 아니거나, 0을 가지거나 특정 숫자가 두번 사용된 경우 반복문 처음으로 돌아가기
+            // 4. 세자리가 아니거나, 0으로 시작되거나 특정 숫자가 두번 사용된 경우 반복문 처음으로 돌아가기
             let inputCheck = Array(String(userInput))
-            if Set(inputCheck).count != numberCount || inputCheck.contains("0") {
+            if Set(inputCheck).count != numberCount || inputCheck[0] == "0" || inputCheck.count != numberCount {
                 print("⚠️ 올바르지 않은 입력값입니다.")
                 continue
             }
             
-            // 4. 정답과 유저의 입력값을 비교하여 스트라이크/볼을 출력하기
+            // 5. 정답과 유저의 입력값을 비교하여 스트라이크/볼을 출력하기
             // 만약 정답이라면 break 호출하여 반복문 탈출
             var strike = 0
             var ball = 0
@@ -75,12 +82,12 @@ class BaseballGame {
     // MARK: - 정답 만드는 함수
     func makeAnswer() -> Int? {
         var tempNumbers: [Int] = [] // 조건에 맞는 숫자 배열들
-        for i in 123...987 {
+        for i in 102...987 {
             let numberString = String(i)
            
-            // 중복된 숫자가 없고 0이 포함되어 있지 않은지 확인
+            // 정답이 되는 숫자를 0에서 9까지의 서로 다른 3자리의 숫자 (0시작x)
             let numberSet = Set(numberString)
-            if numberSet.count == 3 && !numberSet.contains("0") {
+            if numberSet.count == 3 {
             // print("Random three-digit number: \(i)")
                 tempNumbers.append(i)
             }
