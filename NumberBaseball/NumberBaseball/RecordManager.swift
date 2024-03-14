@@ -12,6 +12,9 @@ class RecordManager {
     }
     func showRecords() {
         // 게임 기록
+        if record.isEmpty {
+            print("게임 결과가 없습니다.")
+        }
         for (idx, record) in record.enumerated() {
             print("\(idx+1)번째 게임 : 시도 횟수 - \(record)")
         }
