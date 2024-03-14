@@ -23,7 +23,7 @@ class Calculator {
         self.operation = operation
     }
     
-    func calculate(_ firstNumber: Double, _ secondNumber: Double) -> Double? {
+    func calculate(_ firstNumber: Int, _ secondNumber: Int) -> Double? {
         guard let operation = operation else {
             return nil
         }
@@ -31,44 +31,50 @@ class Calculator {
     }
 }
 
-// 프로토콜을 배우지 않아 클래스의 상속으로 처리
-class AbstractOperation {
-    // 연산을 수행하는 함수 작성
-    func calculate(_ firstNumber: Double,_ secondNumber: Double) -> Double {
-        return 0
-    }
+// 프로토콜 사용
+protocol AbstractOperation {
+    // 연산을 수행하는 함수
+    func calculate(_ firstNumber: Int,_ secondNumber: Int) -> Double
 }
+
 class AddOperation: AbstractOperation {
     // 함수 override
-    override func calculate(_ firstNumber: Double, _ secondNumber: Double) -> Double {
-        return firstNumber + secondNumber
+    func calculate(_ firstNumber: Int, _ secondNumber: Int) -> Double {
+        Double(firstNumber + secondNumber)
     }
 }
 class SubtractOperation: AbstractOperation {
+    /**
+      - parameters:
+      - firstNumber: 빼기 연산자의 왼쪽에 오는 수
+      - secondNumber: 빼기 연산자의 오른쪽에 오는 수
+     */
     // 함수 override
-    override func calculate(_ firstNumber: Double, _ secondNumber: Double) -> Double {
-        return firstNumber - secondNumber
+    func calculate(_ firstNumber: Int, _ secondNumber: Int) -> Double {
+        Double(firstNumber - secondNumber)
     }
 }
 class MultiplyOperation: AbstractOperation {
     // 함수 override
-    override func calculate(_ firstNumber: Double, _ secondNumber: Double) -> Double {
-        return firstNumber * secondNumber
+    func calculate(_ firstNumber: Int, _ secondNumber: Int) -> Double {
+        Double(firstNumber * secondNumber)
     }
 }
 class DivideOperation: AbstractOperation {
     // 함수 override
-    override func calculate(_ firstNumber: Double, _ secondNumber: Double) -> Double {
-        return firstNumber / secondNumber
+    func calculate(_ firstNumber: Int, _ secondNumber: Int) -> Double {
+        // 예외처리
+        guard secondNumber != 0 else { return 0 }
+        return Double(firstNumber) / Double(secondNumber)
     }
 }
-
 
 func testLv4() {
     let calculator = Calculator() // (덧셈 기능하도록 초기화)
     
     calculator.setOperation(AddOperation())
     let addResult = calculator.calculate(3, 5)
+    print("addResult : \(addResult)")
     
     // calculator에 뺄셈 기능하도록 프로퍼티 변경함수 호출
     calculator.setOperation(SubtractOperation())
@@ -81,14 +87,8 @@ func testLv4() {
     print("multiplyResult : \(multiplyResult)")
     // calculator에 나눗셈 기능하도록 프로퍼티 변경함수 호출
     calculator.setOperation(DivideOperation())
-    let divideResult = calculator.calculate(3, 5) // 나눗셈 연산
+    let divideResult = calculator.calculate(1, 3) // 나눗셈 연산
     print("divideResult : \(divideResult)")
-
-    print("addResult : \(addResult)")
-    print("subtractResult : \(subtractResult)")
-    print("multiplyResult : \(multiplyResult)")
-    print("divideResult : \(divideResult)")
-    
 }
     
 testLv4()
