@@ -35,6 +35,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfK-jZ-bRf">
                                                     <rect key="frame" x="329" y="9.9999999999999982" width="51" height="31.333333333333329"/>
+                                                    <connections>
+                                                        <action selector="switchChanged:" destination="Hjm-96-lh4" eventType="valueChanged" id="NfZ-XW-THg"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -68,7 +71,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Todo List" id="eYx-ea-s63">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="AVz-9k-uVo"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="AVz-9k-uVo">
+                            <connections>
+                                <action selector="tapAddButton:" destination="BYZ-38-t0r" id="34N-65-2ZQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="todoTableView" destination="s4I-XJ-HxP" id="sOj-Gb-cJq"/>
