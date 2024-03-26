@@ -22,17 +22,25 @@ class TodoTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    @IBAction func switchChanged(_ sender: Any) {
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isCompletedSwitch.isOn = false
+        todoLabel.attributedText = nil
+    }
+
+    func setData(_ todoData: TodoData) {
+        todoLabel.text = todoData.title
+        isCompletedSwitch.isOn = todoData.isCompleted
+        // 스위치의 상태에 따라 텍스트 라벨의 스타일 변경
+        updateLabelStyle()
+    }
+    
+    func updateLabelStyle() {
         if isCompletedSwitch.isOn {
             todoLabel.attributedText = todoLabel.text?.strikeThrough()
         } else {
             todoLabel.attributedText = todoLabel.text?.removeStrikeThrough()
         }
-    }
-    
-    func setData(_ todoData: TodoData) {
-        todoLabel.text = todoData.title
-        isCompletedSwitch.isOn = todoData.isCompleted
     }
     
 }
