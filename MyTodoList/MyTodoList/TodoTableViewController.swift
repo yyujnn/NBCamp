@@ -8,16 +8,16 @@
 import UIKit
 
 class TodoTableViewController: UIViewController {
-
+    
     var todoData = [TodoData]() {
         didSet {
             self.saveTasks()
         }
     }
     
-    var testData = TodoData.sampleData
-
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var todoTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         todoTableView.delegate = self
@@ -29,7 +29,6 @@ class TodoTableViewController: UIViewController {
     }
     // add 버튼 액션 메서드
     @IBAction func tapAddButton(_ sender: UIBarButtonItem) {
-        
         let alert = UIAlertController(title: "할 일 추가", message: "할 일을 입력해주세요", preferredStyle: .alert)
         // 버튼 객체
         alert.addTextField { (myTextField) in
@@ -102,7 +101,7 @@ extension TodoTableViewController: UITableViewDataSource {
         print(todoData)
         todoTableView.reloadData()
     }
-
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.todoData.remove(at: indexPath.row)
@@ -116,12 +115,12 @@ extension TodoTableViewController: UITableViewDataSource {
 
 // delegate 역할
 extension TodoTableViewController: UITableViewDelegate {
-   /* func tableView(_ tableView: UITableView, didSelectRowAt
-                   indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        print("Selected: \(todoData[indexPath.row])")
-        
-    } // -> 셀 눌렀을 때 동작
-    */
+    /* func tableView(_ tableView: UITableView, didSelectRowAt
+     indexPath: IndexPath) {
+     tableView.deselectRow(at: indexPath, animated: true)
+     print("Selected: \(todoData[indexPath.row])")
+     
+     } // -> 셀 눌렀을 때 동작
+     */
 }
 
