@@ -9,7 +9,7 @@
 ## ⚙️ Calculator
 - 📗Swift 문법 기초 과제 - 계산기
 - 💡Goal : 나만의 계산기 만들기
-- <a href="https://yujjne.tistory.com/20">코드 정리 BLOG🔗</a>
+- <a href="https://yujjne.tistory.com/20">🔗코드 정리 BLOG</a>
 <br>
 
 ## ⚾️ Number Baseball
