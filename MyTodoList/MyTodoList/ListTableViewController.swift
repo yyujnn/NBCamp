@@ -40,8 +40,7 @@ extension ListTableViewController: UITableViewDataSource {
     }
 }
 
-
-// delegate 역할
+// MARK: - Table view data delegate
 extension ListTableViewController: UITableViewDelegate {
     
    func tableView(_ tableView: UITableView, didSelectRowAt
