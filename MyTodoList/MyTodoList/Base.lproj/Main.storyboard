@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="s4I-XJ-HxP">
-                                <rect key="frame" x="0.0" y="161" width="393" height="657"/>
+                                <rect key="frame" x="0.0" y="161" width="393" height="691"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoTableViewCell" id="Hjm-96-lh4" customClass="TodoTableViewCell" customModule="MyTodoList" customModuleProvider="target">
@@ -73,21 +73,31 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DWj-LD-JHW" secondAttribute="trailing" symbolic="YES" id="ALR-lF-f5J"/>
                             <constraint firstItem="s4I-XJ-HxP" firstAttribute="top" secondItem="DWj-LD-JHW" secondAttribute="bottom" constant="8" symbolic="YES" id="CFy-97-URJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s4I-XJ-HxP" secondAttribute="trailing" id="FJ5-ZB-0xX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="s4I-XJ-HxP" secondAttribute="bottom" id="RBq-7Y-Xvc"/>
+                            <constraint firstAttribute="bottom" secondItem="s4I-XJ-HxP" secondAttribute="bottom" id="ZDV-rf-T5l"/>
                             <constraint firstItem="DWj-LD-JHW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lb7-0T-KEE"/>
                             <constraint firstItem="DWj-LD-JHW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="nch-eW-nfL"/>
                             <constraint firstItem="s4I-XJ-HxP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oGp-fG-hNS"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="eYx-ea-s63">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="AVz-9k-uVo">
-                            <connections>
-                                <action selector="tapAddButton:" destination="BYZ-38-t0r" id="34N-65-2ZQ"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" systemItem="edit" id="4kq-1Z-NYc">
+                                <connections>
+                                    <action selector="tapEditButton:" destination="BYZ-38-t0r" id="ipk-3R-smB"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" systemItem="add" id="AVz-9k-uVo">
+                                <connections>
+                                    <action selector="tapAddButton:" destination="BYZ-38-t0r" id="34N-65-2ZQ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoryLabel" destination="DWj-LD-JHW" id="9fS-VX-Dfb"/>
+                        <outlet property="editButton" destination="4kq-1Z-NYc" id="N1h-Pw-BPl"/>
                         <outlet property="todoTableView" destination="s4I-XJ-HxP" id="sOj-Gb-cJq"/>
                     </connections>
                 </viewController>
