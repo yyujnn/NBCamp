@@ -7,20 +7,20 @@
 ```
 
 ## ⚙️ Calculator
-- 📗Swift 문법 기초 과제 - 계산기
-- 💡Goal : 나만의 계산기 만들기
+- Swift 문법 기초 과제
+- Goal : 나만의 계산기 만들기
 - <a href="https://yujjne.tistory.com/20">🔗코드 정리 BLOG</a>
 <br>
 
 ## ⚾️ Number Baseball
-- 📘Swift 문법 심화 과제 - 숫자 야구 게임
-- 💡Goal : 숫자 야구 게임 만들기
+- Swift 문법 심화 과제
+- Goal : 숫자 야구 게임 만들기
 - <a href="https://yujjne.tistory.com/21">🔗 코드 정리 BLOG</a>
 <br>
 
 ## 📃To do List
-- 📒iOS 입문 과제
-- 💡Goal : 메모앱(My Todo List) 만들기
+- iOS 입문 과제
+- Goal : 메모앱(My Todo List) 만들기
 - <a href="https://yujjne.tistory.com/28">🔗 코드 정리 BLOG</a>
 - Function List
   - Todo List 조회
